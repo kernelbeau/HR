@@ -1,0 +1,58 @@
+{% extends "human_res/base.html" %}
+
+{% block page_head %}
+  <div class="row">
+    {% block head_left %}
+      <div class="col-sm-4">
+        {% if employee.id %}
+          <h3>Update employee...</h3>
+        {% else %}
+          <h3>Add a new employee...</h3>
+        {% endif %}
+      </div>
+    {% endblock %}
+    {% block head_right %}
+      <div class="col-sm-8">
+        {% if employee.id %}
+          <form action="{% url 'human_res:employee-delete' pk=employee.id %}" method="GET">
+            {% csrf_token %}
+            <div>
+              <button type='submit' class="btn btn-danger navbar-right" role="button">Remove {{ employee }}</button>
+            </div>
+          </form>
+        {% endif %}
+      </div>
+    {% endblock %}
+  </div>
+{% endblock %}
+
+
+{% block content_col %}
+
+  <form class="form-inline" role="form" action="{{ action }}" method="POST">{% csrf_token %}
+
+    {% for hidden in form.hidden_fields %}
+      {{ hidden }}
+    {% endfor %}
+
+    {% for field in form.visible_fields %}
+      <div id="{{ field.auto_id }}_container" class="form-group">
+        <div class="fieldwrapper">
+          <div id="{{ field.auto_id }}_errors">
+            {{ field.errors }}
+          </div>
+          <div>
+            {{ field.label_tag }} {{ field }}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+
+    <div>
+      <button type='submit' class="btn btn-warning">Yes, save.</button>
+      <a href="{% url 'human_res:employee-list' %}" class="btn btn-default" role="button">No, cancel.</a>
+    </div>
+
+  </form>
+
+{% endblock content_col %}

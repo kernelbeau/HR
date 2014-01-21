@@ -1,0 +1,32 @@
+{% extends "human_res/base.html" %}
+
+{% block page_head %}
+  <div class="row">
+    <div class="col-sm-12"><h3>Employee detail...</h3></div>
+  </div>
+{% endblock %}
+
+{% block content_col %}
+
+  <address>
+
+    <strong>{{ employee.name_first }}&nbsp;{{ employee.name_last }}</strong><br>
+
+    {% for item in address %}
+      <span class="text-muted"><small>{{ item.address_type }} Address</small></span><br>
+      {{ item.address }}<br>
+      {{ item.city }},&nbsp;{{ item.state }}&nbsp;&nbsp;{{ item.zip_code }}<br>
+    {% endfor %}
+
+    {% if email %}
+      <span class="text-muted"><small>Email</small></span><br>
+      {% for item in email %}
+        {{ item.email }}
+      {% endfor %}
+    {% endif %}
+
+  </address>
+
+  <a href="{% url 'human_res:employee-list' %}" class="btn btn-default" role="button">Back</a>
+
+{% endblock content_col %}
