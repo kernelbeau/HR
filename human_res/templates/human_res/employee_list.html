@@ -1,0 +1,46 @@
+{% extends "human_res/base.html" %}
+
+{% block page_head %}
+  <div class="row">
+    {% block head_left %}
+      <div class="col-sm-4">
+        <h3>Current employees...</h3>
+      </div>
+    {% endblock %}
+    {% block head_right %}
+      <div class="col-sm-8">
+        <a href="{% url 'human_res:employee-create' %}" class="btn btn-warning navbar-right" role="button">Add New Employee</a>
+      </div>
+    {% endblock %}
+  </div>
+{% endblock %}
+
+
+{% block content_col %}
+
+  <table class="table table-striped">
+    <tr>
+      <th></th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>I.D.</th>
+      <th></th>
+    </tr>
+    {% for item in object_list %}
+      <tr>
+        <td><a href="{{ item.get_absolute_url }}" class="btn btn-info btn-xs" role="button">View</a></td>
+        <td>{{ item.name_first }}</td>
+        <td>{{ item.name_last }}</td>
+        <td>####</td>
+        <td><a href="{% url 'human_res:employee-update' item.id %}" class="btn btn-warning btn-xs" role="button">Edit</a></td>
+      </tr>
+    {% empty %}
+      <p>No active employees.</p>
+    {% endfor %}
+  </table>
+
+{% endblock content_col %}
+
+{% block status_bar %}
+  {% block pagination %}{% include "human_res/pagination.html" %}{% endblock %}
+{% endblock %}

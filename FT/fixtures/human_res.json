@@ -1,0 +1,70 @@
+[
+{
+  "pk": 1, 
+  "model": "human_res.employee", 
+  "fields": {
+    "name_first": "First_one", 
+    "name_last": "Last_one"
+  }
+},
+{
+  "pk": 2, 
+  "model": "human_res.employee", 
+  "fields": {
+    "name_first": "First_two", 
+    "name_last": "Last_two"
+  }
+},
+{
+  "pk": 3, 
+  "model": "human_res.employee", 
+  "fields": {
+    "name_first": "First_three", 
+    "name_last": "Last_three"
+  }
+},
+{
+  "pk": 1, 
+  "model": "human_res.address", 
+  "fields": {
+    "city": "One_city", 
+    "state": "TN", 
+    "address": "111 One_address St.", 
+    "employee": 1, 
+    "address_type": "Physical", 
+    "zip_code": "11113"
+  }
+},
+{
+  "pk": 2, 
+  "model": "human_res.address", 
+  "fields": {
+    "city": "Two_city", 
+    "state": "TN", 
+    "address": "222 Two_address Rd.", 
+    "employee": 2, 
+    "address_type": "Alternate", 
+    "zip_code": "22221"
+  }
+},
+{
+  "pk": 3, 
+  "model": "human_res.address", 
+  "fields": {
+    "city": "Two_city", 
+    "state": "TN", 
+    "address": "P.O.Box 22", 
+    "employee": 2, 
+    "address_type": "Mailing", 
+    "zip_code": "22222"
+  }
+},
+{
+  "pk": 1, 
+  "model": "human_res.email", 
+  "fields": {
+    "employee": 1, 
+    "email": "one@example.com"
+  }
+}
+]
