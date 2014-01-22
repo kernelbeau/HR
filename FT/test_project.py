@@ -11,7 +11,7 @@ class DjangoAdminTests(MyTestCase):
         # go to admin site
         self.driver.get('%s%s'% (self.live_server_url, '/admin/'))
         body = self.driver.find_element_by_tag_name('body')
-        self.assertIn('Django Project', body.text)
+        self.assertIn('My Project', body.text)
         # log in
         username_field = self.driver.find_element_by_name('username')
         username_field.send_keys("kb")
@@ -34,7 +34,7 @@ class DjangoProjectTests(MyTestCase):
     def test_django_project_index_page(self):
         self.driver.get('%s%s' % (self.live_server_url, '/'))
         body = self.driver.find_element_by_tag_name('body')
-        self.assertIn('Django Project', body.text)
+        self.assertIn('My Project', body.text)
 
     def test_visit_human_res_page(self):
         self.driver.get('%s%s' % (self.live_server_url, '/'))

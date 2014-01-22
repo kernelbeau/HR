@@ -1,5 +1,5 @@
 """
-Django settings for project project.
+Django settings for project HR.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
@@ -118,6 +118,7 @@ if MY_HOST in DEV_SERV:
     DEBUG_TOOLBAR_CONFIG = {
         'INTERCEPT_REDIRECTS': False,
     }
+    # end debug_toolbar settings
 
 else:
 
