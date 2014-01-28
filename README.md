@@ -1,1 +1,1 @@
-Django human resource management app
+A human resource department app for Django.
