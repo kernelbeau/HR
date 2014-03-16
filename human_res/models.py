@@ -25,9 +25,10 @@ class Employee(models.Model):
 
 class Address(models.Model):
     """ """
+    ALTERNATE = 'A'; MAILING = 'M'; PHYSICAL = 'P'
+    TYPE = ((ALTERNATE, 'Alternate'), (MAILING, 'Mailing'), (PHYSICAL, 'Physical'),)
     address = models.CharField(_('address'), max_length=72)
-    TYPE = (('Alternate', 'Alternate'), ('Mailing', 'Mailing'), ('Physical', 'Physical'),)
-    address_type = models.CharField(_('address type'), max_length=10, choices=TYPE)
+    address_type = models.CharField(_('address type'), max_length=2, choices=TYPE, default=PHYSICAL)
     city = models.CharField(_('city'), max_length=36)
     employee = models.ForeignKey(Employee)
     state = USStateField(_('state'),)
