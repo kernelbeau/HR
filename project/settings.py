@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import socket
 
 MY_HOST = socket.gethostname()
-DEV_SERV = ('lau', )    # computers used for development
+DEV_SERV = ('s209','s226','r40')    # computers used for development
 #======================================================================#
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -116,7 +116,7 @@ if MY_HOST in DEV_SERV:
         'django.contrib.webdesign',
     )
     DEBUG_TOOLBAR_CONFIG = {
-        'INTERCEPT_REDIRECTS': False,
+        #'INTERCEPT_REDIRECTS': False,
     }
     # end debug_toolbar settings
 
