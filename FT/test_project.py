@@ -4,7 +4,7 @@ from selenium.webdriver.common.keys import Keys
 
 from FT.helpers import MyTestCase
 
-@skip
+#@skip
 class DjangoAdminTests(MyTestCase):
     """ """
     def test_admin_site_login_app_links_and_logout(self):
@@ -28,19 +28,30 @@ class DjangoAdminTests(MyTestCase):
         self.driver.find_element_by_link_text('Log out').click()
         self.assertEqual(self.driver.current_url, self.live_server_url + '/admin/logout/')
 
-@skip
+#@skip
 class DjangoProjectTests(MyTestCase):
     """ """
     def test_django_project_index_page(self):
         self.driver.get('%s%s' % (self.live_server_url, '/'))
         body = self.driver.find_element_by_tag_name('body')
-        self.assertIn('My Project', body.text)
+        self.assertIn('My Company', body.text)
 
-    def test_visit_human_res_page(self):
+    def test_visit_human_res_home_page(self):
         self.driver.get('%s%s' % (self.live_server_url, '/'))
         # click link to human_res
-        self.driver.find_element_by_link_text('H.R.').click()
+        self.driver.find_element_by_link_text('Human Resources').click()
+        self.driver.find_element_by_link_text("What's New").click()
         self.assertEqual(self.driver.current_url, self.live_server_url + '/hr/')
         # view human_res home page
         body = self.driver.find_element_by_tag_name('body')
         self.assertIn('Human Resource news...', body.text)
+
+    def test_visit_human_res_personnel_page(self):
+        self.driver.get('%s%s' % (self.live_server_url, '/'))
+        # click link to personnel
+        self.driver.find_element_by_link_text('Human Resources').click()
+        self.driver.find_element_by_link_text("Personnel").click()
+        self.assertEqual(self.driver.current_url, self.live_server_url + '/hr/employee/')
+        # view human_res personnel page
+        body = self.driver.find_element_by_tag_name('body')
+        self.assertIn('Current employees...', body.text)
